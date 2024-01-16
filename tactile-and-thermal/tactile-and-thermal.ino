@@ -4,12 +4,15 @@
 #include "pineapple.h"
 
 const int sensor_bits = 9;
+const int sensor_pin = A5;
 
-OneWire oneWire(THS);
+OneWire oneWire(sensor_pin);
 DallasTemperature ths(&oneWire);
 
 void setup() {
   // put your setup code here, to run once:
+  pinMode(GATE, OUTPUT);
+  digitalWrite(GATE, HIGH);
   Serial.begin(9600);
   ths.setResolution(sensor_bits);
 }
